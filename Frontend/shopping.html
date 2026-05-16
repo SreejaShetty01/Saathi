@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Shopping - Saathi</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #eef5ff, #f8fbff);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      height: 70px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2563eb;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 80px 40px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      color: #1e3a8a;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #64748b;
+    }
+
+    /* SEARCH */
+    .search-box {
+      margin-top: 30px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid #cbd5f5;
+      font-size: 14px;
+    }
+
+    .search-box button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* SUGGESTIONS */
+    .chips {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: white;
+      border-radius: 20px;
+      padding: 8px 14px;
+      font-size: 13px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.15);
+      border-color: #2563eb;
+      color: #2563eb;
+    }
+
+    .chip:active {
+      transform: scale(0.95);
+    }
+
+    .recommendation {
+      margin-top: 10px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .rec-good {
+      background: #ecfdf5;
+      color: #059669;
+    }
+
+    .rec-wait {
+      background: #fff7ed;
+      color: #d97706;
+    }
+
+    /* INSIGHT CARDS */
+    .section {
+      padding: 30px 80px;
+    }
+
+    .section h2 {
+      color: #1e3a8a;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2563eb;
+      margin-top: 8px;
+    }
+
+    .insight-box {
+      margin-top: 25px;
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 15px;
+      border-radius: 8px;
+      color: #1e40af;
+      font-size: 14px;
+    }
+
+    .price-history {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 5px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .pill {
+      background: #e0e7ff;
+      color: #4338ca;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .result-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .results {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="logo" onclick="location.href='index.html'">Saathi</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Shop smarter, not harder.</h1>
+    <p>Compare prices, track trends and find the best deals instantly.</p>
+
+    <div class="search-box">
+      <input id="shopInput" placeholder="Search product (e.g. iPhone 13)">
+      <button id="compareBtn">Compare</button>
+    </div>
+
+    <div data-results></div>
+
+    <div class="chips">
+      <div class="chip" data-chip data-target="#shopInput">iPhone 13</div>
+      <div class="chip" data-chip data-target="#shopInput">Boat Airdopes</div>
+      <div class="chip" data-chip data-target="#shopInput">Nike Shoes</div>
+      <div class="chip" data-chip data-target="#shopInput">Samsung S23</div>
+    </div>
+  </div>
+
+  <!-- TRENDING DEALS -->
+  <div class="section">
+    <h2>Trending Deals</h2>
+
+    <div class="grid">
+      <div class="card">
+        <div>Boat Airdopes 141</div>
+        <div class="price">₹1,299</div>
+        <div class="tag">Lowest in 30 days</div>
+      </div>
+
+      <div class="card">
+        <div>Nike Revolution Shoes</div>
+        <div class="price">₹2,499</div>
+        <div class="tag">Price dropped 18%</div>
+      </div>
+
+      <div class="card">
+        <div>Samsung Galaxy Buds</div>
+        <div class="price">₹4,999</div>
+        <div class="tag">Amazon best price</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICE INSIGHTS -->
+  <div class="section">
+    <h2>Smart Insights</h2>
+
+    <div class="grid">
+      <div class="card">
+        <div>Most tracked product</div>
+        <div class="price">iPhone 13</div>
+        <div class="tag">Across all platforms</div>
+      </div>
+
+      <div class="card">
+        <div>Best time to buy</div>
+        <div class="price">Festival Sales</div>
+        <div class="tag">Up to 35% cheaper</div>
+      </div>
+
+      <div class="card">
+        <div>Rising category</div>
+        <div class="price">Wireless Earbuds</div>
+        <div class="tag">High demand this month</div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

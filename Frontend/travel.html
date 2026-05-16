@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Travel - Saathi</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #eef5ff, #f8fbff);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      height: 70px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2563eb;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 80px 30px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      color: #1e3a8a;
+      margin-bottom: 6px;
+    }
+
+    .hero p {
+      color: #64748b;
+    }
+
+    /* ROUTE INPUT */
+    .route-box {
+      margin-top: 25px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .route-box input {
+      flex: 1;
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid #cbd5f5;
+      font-size: 14px;
+    }
+
+    .route-box button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .vehicle-select {
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #cbd5f5;
+      font-size: 14px;
+      background: white;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1em;
+      padding-right: 2.5rem;
+    }
+
+    /* POPULAR ROUTES */
+    .chips {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: white;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.15);
+      color: #2563eb;
+    }
+
+    .chip:active {
+      transform: scale(0.95);
+    }
+
+    /* SECTION */
+    .section {
+      padding: 30px 80px;
+    }
+
+    .section h2 {
+      color: #1e3a8a;
+      margin-bottom: 20px;
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2563eb;
+      margin-top: 6px;
+    }
+
+    .tag {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .insight-box {
+      margin-top: 25px;
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 15px;
+      border-radius: 8px;
+      color: #1e40af;
+      font-size: 14px;
+    }
+
+    .pill {
+      background: #e0e7ff;
+      color: #4338ca;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .result-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .results {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="logo" onclick="location.href='index.html'">Saathi</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Move smarter, every ride.</h1>
+    <p>Compare fares across platforms and choose the smartest route instantly.</p>
+
+    <div class="route-box">
+      <input data-travel-pickup placeholder="Pickup (e.g. Ameerpet)">
+      <input data-travel-drop placeholder="Drop (e.g. Hitech City)">
+      <select data-travel-vehicle class="vehicle-select">
+        <option value="Bike">🏍️ Bike</option>
+        <option value="Auto">🛺 Auto</option>
+        <option value="Cab" selected>🚗 Cab</option>
+      </select>
+      <button data-travel-compare>Compare</button>
+    </div>
+
+    <div data-results></div>
+
+    <div class="chips">
+      <div class="chip" data-chip data-pickup="Ameerpet" data-drop="Hitech City">Ameerpet → Hitech City</div>
+      <div class="chip" data-chip data-pickup="Kukatpally" data-drop="Gachibowli">Kukatpally → Gachibowli</div>
+      <div class="chip" data-chip data-pickup="Madhapur" data-drop="Airport">Madhapur → Airport</div>
+    </div>
+  </div>
+
+  <!-- FARE COMPARISON -->
+  <div class="section">
+    <h2>Fare Comparison</h2>
+
+    <div class="grid">
+      <div class="card">
+        <div>Uber Go</div>
+        <div class="price">₹182</div>
+        <div class="tag">Fastest pickup</div>
+      </div>
+
+      <div class="card">
+        <div>Ola Mini</div>
+        <div class="price">₹175</div>
+        <div class="tag">Best price right now</div>
+      </div>
+
+      <div class="card">
+        <div>Rapido</div>
+        <div class="price">₹150</div>
+        <div class="tag">Bike option</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SMART INSIGHTS -->
+  <div class="section">
+    <h2>Smart Travel Insights</h2>
+
+    <div class="grid">
+      <div class="card">
+        <div>Cheapest time</div>
+        <div class="price">11AM - 1PM</div>
+        <div class="tag">Lowest surge hours</div>
+      </div>
+
+      <div class="card">
+        <div>Peak demand</div>
+        <div class="price">6PM - 9PM</div>
+        <div class="tag">High surge pricing</div>
+      </div>
+
+      <div class="card">
+        <div>Most booked route</div>
+        <div class="price">IT Corridor</div>
+        <div class="tag">Daily commuters</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

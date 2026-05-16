@@ -1,0 +1,23 @@
+# === Python Cache ===
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# === Environment & Credentials ===
+.env
+.vscode/
+
+# === Data & Datasets ===
+data/*.csv
+data/*.xlsx
+data/*.json
+
+# === Machine Learning Models & Saved Weights ===
+app/models/*.pkl
+app/models/*.joblib
+app/models/*.h5
+app/models/*.pt
+
+# === System Logs ===
+*.log
+.DS_Store

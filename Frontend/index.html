@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Saathi</title>
+
+  <style>
+    body {
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #eaf3ff, #f8fbff);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      height: 70px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #2563eb;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links a {
+      margin: 0 18px;
+      text-decoration: none;
+      color: #334155;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      color: #1e3a8a;
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      color: #64748b;
+      font-size: 16px;
+      margin: 8px 0;
+      line-height: 1.5;
+    }
+
+    /* DOMAIN CARDS */
+    .domains {
+      margin-top: 70px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+
+      width: 220px;
+      background: white;
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    }
+
+    .profile {
+      position: relative;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .profile-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 45px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      min-width: 150px;
+      z-index: 100;
+      border: 1px solid #e2e8f0;
+    }
+
+    .profile-menu div {
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+
+    .profile-menu div:hover {
+      background: #f1f5f9;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12);
+    }
+
+    .emoji {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .desc {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 6px;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 120px;
+      text-align: center;
+      padding: 30px;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .footer {
+      margin-top: 120px;
+      padding: 30px;
+      text-align: center;
+      color: #64748b;
+      background: #f8fafc;
+      font-size: 14px;
+    }
+
+    .result-card {
+      margin: 40px auto;
+      width: 250px;
+      text-align: center;
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .result-card img {
+      width: 100px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="logo" style="cursor:pointer" onclick="location.href='index.html'">Saathi</div>
+    <div class="nav-links" style="flex: 1; display: flex; justify-content: center; margin-right: 20px;">
+      <a href="shopping.html">Shopping</a>
+      <a href="travel.html">Travel</a>
+      <a href="food.html">Food</a>
+    </div>
+    <div class="profile" onclick="toggleProfile()">
+      👤
+      <div id="profileMenu" class="profile-menu">
+        <div>My Profile</div>
+        <div>Search History</div>
+        <div style="border-top: 1px solid #f1f5f9; color: #ef4444;">Logout</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Clarity before every choice.</h1>
+    <p>Your calm companion for smarter decisions.</p>
+    <p style="color: #64748b; font-size: 16px; margin-bottom: 24px;">Don't settle for one store's price. Our extension
+      finds you the best deal across the web.</p>
+  </div>
+
+  <!-- DOMAIN CARDS -->
+  <div class="domains">
+
+    <div class="card" onclick="location.href='shopping.html'">
+      <div class="emoji">🛍</div>
+      <div class="title">Shopping</div>
+      <div class="desc">Compare prices & trends instantly</div>
+    </div>
+
+    <div class="card" onclick="location.href='travel.html'">
+      <div class="emoji">🚖</div>
+      <div class="title">Travel</div>
+      <div class="desc">Find the smartest ride options</div>
+    </div>
+
+    <div class="card" onclick="location.href='food.html'">
+      <div class="emoji">🍔</div>
+      <div class="title">Food</div>
+      <div class="desc">Discover the best platform deals</div>
+    </div>
+
+  </div>
+
+  <!-- SUPPORTED PLATFORMS -->
+  <div class="hero" style="margin-top: 100px;">
+    <h2 style="font-size: 28px; color: #1e3a8a; margin-bottom: 8px;">Supported Platforms</h2>
+    <p style="color: #64748b; font-size: 15px; margin-bottom: 30px;">Saathi connects insights across the platforms you
+      already use.</p>
+
+    <div
+      style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 900px; margin: 0 auto; padding: 0 20px;">
+      <img src="images/amazon.jpg" alt="Amazon" style="height: 45px; border-radius: 8px;">
+      <img src="images/flipkart.png" alt="Flipkart" style="height: 45px; border-radius: 8px;">
+      <img src="images/myntra.jpg" alt="Myntra" style="height: 45px; border-radius: 8px;">
+      <img src="images/ajio.jpg" alt="Ajio" style="height: 45px; border-radius: 8px;">
+      <img src="images/croma.jpg" alt="Croma" style="height: 45px; border-radius: 8px;">
+      <img src="images/swiggy.jpg" alt="Swiggy" style="height: 45px; border-radius: 8px;">
+      <img src="images/zomato.jpg" alt="Zomato" style="height: 45px; border-radius: 8px;">
+      <img src="images/uber.png" alt="Uber" style="height: 45px; border-radius: 8px;">
+      <img src="images/ola.png" alt="Ola" style="height: 45px; border-radius: 8px;">
+      <img src="images/rapido.png" alt="Rapido" style="height: 45px; border-radius: 8px;">
+    </div>
+  </div>
+
+  <!-- ROADMAP SECTION -->
+  <div class="hero" style="margin-top: 100px;">
+    <small style="color: #2563eb; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">🚀 Coming
+      Soon</small>
+    <h2 style="font-size: 32px; color: #1e3a8a; margin: 8px 0;">Saathi Roadmap</h2>
+    <p style="color: #64748b; font-size: 16px;">We’re building smarter comparisons for everyday life.</p>
+  </div>
+
+  <div class="domains" style="margin-top: 40px; margin-bottom: 100px;">
+    <div class="card" style="cursor: default;">
+      <div class="emoji">🎬</div>
+      <div class="title">Movie Tickets</div>
+      <div class="desc">Check ticket prices across platforms before booking.</div>
+    </div>
+
+    <div class="card" style="cursor: default;">
+      <div class="emoji">✈️</div>
+      <div class="title">Flights</div>
+      <div class="desc">See flight prices early and choose smarter travel.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer" style="margin-top: 100px; padding: 60px 20px; border-top: 1px solid #e2e8f0;">
+    <p style="font-weight: 600; color: #1e293b; margin-bottom: 8px;">Built with clarity by Team Saathi</p>
+    <p style="margin: 0;">Making everyday decisions smarter.</p>
+    <div style="margin-top: 24px; font-size: 12px; opacity: 0.6;">© 2026 Saathi Intelligence</div>
+  </div>
+  <!-- SCRIPT AFTER FOOTER -->
+  <script>
+    function toggleProfile() {
+      const menu = document.getElementById("profileMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+  </script>
+  <script>
+    function compareProduct() {
+      const input = document.querySelector("input").value;
+
+      if (!input) {
+        alert("Type a product first");
+        return;
+      }
+
+      const card = `
+    <div class="result-card">
+      <img src="https://via.placeholder.com/120" />
+      <h3>${input}</h3>
+      <p>Best price found: ₹4,999</p>
+    </div>
+  `;
+
+      document.body.insertAdjacentHTML("beforeend", card);
+    }
+  </script>
+</body>
+
+</html>
